@@ -12,11 +12,11 @@ const NavBar = () => {
 
             <div className="main-menu">
                 <ul className="menu-list">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li>About school</li>
+                    <li>Teachers</li>
+                    <li>Stady process</li>
+                    <li>Questions</li>
+                    <li>Contacts</li>
                 </ul>
             </div>
 
