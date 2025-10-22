@@ -1,10 +1,6 @@
 
-function App() {
-  return (
-    <div className="App">
-      <p className='div-p'>hfjshvgfjshfkjsdhfkjhsdjkfhsdkjhfjkdshfjsdhkjfhsdkjfhkjdshfkjsdh</p>
-    </div>
-  );
-}
+import { AppRouter } from "./routes/AppRouter";
 
-export default App;
+export const App = () => {
+  return <AppRouter />
+};
