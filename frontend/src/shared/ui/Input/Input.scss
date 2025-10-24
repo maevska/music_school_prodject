@@ -1,0 +1,90 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+
+  &__label {
+    font-size: 0.95rem;
+    color: #374151;
+    margin-bottom: 6px;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 10px;
+    color: #6b7280;
+    transition: all 0.3s;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px 12px;
+    padding-left: 36px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+    &:disabled {
+      background-color: #f3f4f6;
+      cursor: not-allowed;
+    }
+
+    &--error {
+      border-color: #ef4444;
+      animation: shake 0.3s;
+    }
+  }
+
+  &__toggle {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &__error {
+    font-size: 0.85rem;
+    color: #ef4444;
+    margin-top: 4px;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
