@@ -1,4 +1,7 @@
-import {HomePage} from '@/pages/HomePage/HomePage'
+import {HomePage} from '@/pages';
+import { RegisterPage } from '@/pages';
+import {LoginPage} from '@/pages'
+
 
 export const routesConfig = [
     {
@@ -7,7 +10,17 @@ export const routesConfig = [
     },
 
     {
+        path: '/register',
+        element: <RegisterPage/>,
+    },
+
+    {
+        path: '/login',
+        element: <LoginPage/>,
+    },
+
+    {
         path: '*',
-        element: <div>Page not found: 404</div>
+        element: <div>Page not found: 404</div>,
     }
 ];
