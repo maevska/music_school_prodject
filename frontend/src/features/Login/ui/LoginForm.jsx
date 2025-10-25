@@ -1,6 +1,7 @@
 import { useLoginForm } from "../model/useLoginForm";
 import { Input } from "@/shared";
 import { Button } from "@/shared";
+import { Link } from "react-router-dom";
 import "./LoginForm.scss";
 
 export const LoginForm = () => {
@@ -18,6 +19,13 @@ export const LoginForm = () => {
             <Button type="submit" disabled={loading}>
                 {loading ? "Загрузка..." : "Войти"}
             </Button>
+
+            <div className="form__footer">
+                Нет аккаунта?{" "}
+                <Link to="/register" className="form__link">
+                    Зарегистрироваться
+                </Link>
+            </div>
         </form>
     );
 };
