@@ -70,18 +70,22 @@
 
     .note:nth-child(1) {
       left: 10%;
+      top: -5%;
       animation-delay: 0s;
     }
     .note:nth-child(2) {
       left: 30%;
+      top: -5%;
       animation-delay: 2s;
     }
     .note:nth-child(3) {
       left: 60%;
+      top: -5%;
       animation-delay: 4s;
     }
     .note:nth-child(4) {
       left: 80%;
+      top: -5%;
       animation-delay: 6s;
     }
   }
