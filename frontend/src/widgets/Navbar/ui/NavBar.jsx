@@ -1,19 +1,14 @@
 import "./NavBar.scss"
-import { Button } from "@/shared";
-import { Search } from "@/shared";
 
-export const NavBar = () => {
+export const NavBar = ({ left, actions }) => {
     return (
-        <nav className='navigation'>
-            <div className='logo'>p</div>
+        <nav className="navigation">
+            <div className="logo">p</div>
 
-            <div className='search'>
-                <Search laceholder="Поиск..." />
-            </div>
+            <div className="left">{left}</div>
 
-            <div className='actions'>
-                <Button onClick={() => alert("Нажата кнопка!")}>Действие</Button>
-            </div>
+            <div className="actions">{actions}</div>
         </nav>
     );
 };
+
