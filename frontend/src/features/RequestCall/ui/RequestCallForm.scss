@@ -1,0 +1,49 @@
+.request-call-form {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 340px;
+  position: relative;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .request-call-form__error {
+    color: #d93025;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  &__close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &.success {
+    text-align: center;
+    p {
+      margin-bottom: 12px;
+      color: #28a745;
+    }
+  }
+}
