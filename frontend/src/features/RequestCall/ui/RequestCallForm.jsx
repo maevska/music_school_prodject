@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Input } from "@/shared";
-import { Button } from "@/shared";
-import { Card } from "@/shared";
+import { Input, Button, Container, Card } from "@/shared";
 import { useRequestCall } from "../model/useRequestCall";
 import "./RequestCallForm.scss";
 
@@ -26,30 +24,33 @@ export const RequestCallForm = ({ onClose }) => {
     }
 
     return (
-        <Card className="request-call-form" title = "Заказать звонок">
-            <form onSubmit={handleSubmit}>
-                <Input
-                    label="Ваше имя"
-                    placeholder="Введите имя"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-                <Input
-                    label="Телефон"
-                    placeholder="+7 (___) ___-__-__"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    type="tel"
-                />
-                {error && <p className="request-call-form__error">{error}</p>}
+        <Card className="request-call-form" title="Заказать звонок">
+            <Container className="request-call-container">
 
-                <Button type="submit" disabled={loading}>
-                    {loading ? "Отправка..." : "Отправить заявку"}
+                <form onSubmit={handleSubmit}>
+                    <Input
+                        label="Ваше имя"
+                        placeholder="Введите имя"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <Input
+                        label="Телефон"
+                        placeholder="+7 (___) ___-__-__"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        type="tel"
+                    />
+                    {error && <p className="request-call-form__error">{error}</p>}
+
+                    <Button type="submit" disabled={loading}>
+                        {loading ? "Отправка..." : "Отправить заявку"}
+                    </Button>
+                </form>
+                <Button className="request-call-form__close" onClick={onClose}>
+                    ×
                 </Button>
-            </form>
-            <Button className="request-call-form__close" onClick={onClose}>
-                ×
-            </Button>
+            </Container>
         </Card>
     );
 };
