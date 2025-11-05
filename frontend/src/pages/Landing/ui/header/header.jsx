@@ -1,8 +1,8 @@
 import { Button, Container, Card } from '@/shared';
-import { RequestCall } from '@/features';
+import { RequestCallForm } from '@/features';
 import { useState } from 'react';
 
-export const header = () => {
+export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <header className="header-cont">
@@ -14,8 +14,14 @@ export const header = () => {
                         <li></li>
                         <li></li>
                     </ul>
-                    <Button className="header-button" onClick={() => setIsOpen(true)}>Подавть заявку</Button>
-                    {isOpen && <RequestCall onClose={() => setIsOpen(false)} />}
+                    <Button className="header-button" onClick={() => setIsOpen(true)}>Подать заявку</Button>
+                    {isOpen && (
+                        <div className="header__modal" onClick={() => setIsOpen(false)}>
+                            <div className="header__modal-content" onClick={(e) => e.stopPropagation()}>
+                                <RequestCallForm onClose={() => setIsOpen(false)} />
+                            </div>
+                        </div>
+                    )}
                 </Container>
 
                 <Container className="right-header-cont">
