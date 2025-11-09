@@ -8,9 +8,10 @@ export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <header className="header-cont">
-            <Card className="header-card" title="To Be Heard">
+            <Card className="header-card">
                 <div className="header-content">
                     <Container className="left-header-cont">
+                        <h3 className="header-title">To Be Heard</h3>
                         <ul className='header-list'>
                             <li>first</li>
                             <li>second</li>
