@@ -14,7 +14,7 @@ export const LandingLayout = () => {
     );
 
     const actions = (
-        <Button variant="primary" onClick={() => alert("Нажали кнопку входа")}>
+        <Button variant="primary" className="login-btn" onClick={() => alert("Нажали кнопку входа")}>
             Login
         </Button>
     );
