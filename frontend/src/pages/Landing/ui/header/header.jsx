@@ -14,12 +14,12 @@ export const Header = () => {
                         <h3 className="header-title">To Be Heard</h3>
                         <p className="header-subtitle">Become a voice that cannot be ignored</p>
                         <ul className="header-list">
-                            <li>first</li>
-                            <li>second</li>
-                            <li>theird</li>
+                            <li>Only highly qualified teachers</li>
+                            <li>Training according to modern international methods</li>
+                            <li>Individual study plan for each student</li>
                         </ul>
                         <Button className="header-button" onClick={() => setIsOpen(true)}>
-                            Подать заявку
+                            Submit application
                         </Button>
 
                         {isOpen && (
