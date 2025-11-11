@@ -12,7 +12,8 @@ export const Header = () => {
                 <div className="header-content">
                     <Container className="left-header-cont">
                         <h3 className="header-title">To Be Heard</h3>
-                        <ul className='header-list'>
+                        <p className="header-subtitle">Become a voice that cannot be ignored</p>
+                        <ul className="header-list">
                             <li>first</li>
                             <li>second</li>
                             <li>theird</li>
