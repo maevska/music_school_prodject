@@ -1,13 +1,14 @@
-import { HomePage, RegisterPage, LoginPage, Page404, Landing} from '@/pages';
-import { AppLayout } from '../Layouts/AppLayout';
+import { HomePage, RegisterPage, LoginPage, Page404, Landing } from '@/pages';
+import { LandingLayout } from '../Layouts/LandingLayout';
 import { AuthLayout } from '../Layouts/AuthLayout';
+import { AppLayout } from '../Layouts/AppLayout';
 
 export const routesConfig = [
     {
         path: '/',
-        element: <AppLayout />,
+        element: <LandingLayout />,
         children: [
-{
+            {
                 path: '/',
                 element: <Landing />,
             },
@@ -30,9 +31,15 @@ export const routesConfig = [
     },
 
     {
+        path: '/',
+        element: <AppLayout />,
+        children: [
+            {
                 path: '/home',
                 element: <HomePage />,
             },
+        ],
+    },
 
     {
         path: '*',
