@@ -1,0 +1,133 @@
+@use "@/shared/styles/variables" as *;
+
+.events-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 30px 0;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.events-title {
+  width: 100%;
+  font-size: 45px;
+  font-weight: 700;
+  color: map-get($colors, secondary);
+  margin-bottom: 1.5rem;
+}
+
+.events-description {
+  flex: 1;
+  font-size: 20px;
+  line-height: 1.7;
+  color: map-get($colors, text);
+  width: 45%;
+  max-width: 600px;
+}
+
+.events-imagesWrapper {
+  width: 45%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 0.1px;
+  align-content: start;
+  justify-content: end;
+  flex: 0 0 auto;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-items: center;
+    margin-top: 2rem;
+  }
+}
+
+.events-imagesContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    margin: 0;
+
+    &:hover {
+      transform: scale(1.05);
+      border-color: map-get($colors, hover);
+    }
+  }
+
+  // img1 — нижний левый
+  &:nth-child(1) {
+    grid-column: 1;
+    grid-row: 2;
+     margin-top: 90px;
+     margin-left: 190px;
+    img {
+      width: 170px;
+      height: 170px;
+    }
+  }
+
+  // img2 — верхний левый
+  &:nth-child(2) {
+    padding: 5px;
+    margin-top: 40px;
+    margin-left: 140px;
+    grid-column: 2;
+    grid-row: 1;
+    img {
+      width: 170px;
+      height: 170px;
+    }
+  }
+
+  // img3 — верхний правый
+  &:nth-child(3) {
+    padding: 5px;
+    margin-top: -150px;
+    margin-left: 50px;
+    grid-column: 3;
+    grid-row: 1;
+    img {
+      width: 270px;
+      height: 270px;
+    }
+  }
+
+  // img4 — нижний центр
+  &:nth-child(4) {
+    padding: 5px;
+    margin-top: -30px;
+    margin-left: 50px;
+    grid-column: 2;
+    grid-row: 2;
+    img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  // img5 — нижний правый
+  &:nth-child(5) {
+    padding: 5px;
+     margin-top: -90px;
+     margin-left: 0;
+    grid-column: 3;
+    grid-row: 2;
+    img {
+      width: 260px;
+      height: 260px;
+    }
+  }
+}
