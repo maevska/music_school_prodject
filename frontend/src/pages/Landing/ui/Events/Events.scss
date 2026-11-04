@@ -47,6 +47,41 @@
     margin-top: 2rem;
   }
 }
+ 
+.events-photo {
+  --size: 170px;
+
+  position: relative;
+  box-sizing: content-box;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ddd;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    border-color: map-get($colors, hover);
+  }
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    opacity: 0;
+    transform: scale(1.12);
+    transition: opacity 0.9s ease, transform 1.4s ease;
+
+    &.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
 
 .events-imagesContainer {
   position: relative;
@@ -54,28 +89,15 @@
   justify-content: center;
   align-items: center;
 
-  img {
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #ddd;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    margin: 0;
-
-    &:hover {
-      transform: scale(1.05);
-      border-color: map-get($colors, hover);
-    }
-  }
-
   // img1 — нижний левый
   &:nth-child(1) {
     grid-column: 1;
     grid-row: 2;
-     margin-top: 90px;
-     margin-left: 190px;
-    img {
-      width: 170px;
-      height: 170px;
+    margin-top: 90px;
+    margin-left: 190px;
+
+    .events-photo {
+      --size: 170px;
     }
   }
 
@@ -86,9 +108,9 @@
     margin-left: 140px;
     grid-column: 2;
     grid-row: 1;
-    img {
-      width: 170px;
-      height: 170px;
+
+    .events-photo {
+      --size: 170px;
     }
   }
 
@@ -99,9 +121,9 @@
     margin-left: 50px;
     grid-column: 3;
     grid-row: 1;
-    img {
-      width: 270px;
-      height: 270px;
+
+    .events-photo {
+      --size: 270px;
     }
   }
 
@@ -112,22 +134,28 @@
     margin-left: 50px;
     grid-column: 2;
     grid-row: 2;
-    img {
-      width: 250px;
-      height: 250px;
+
+    .events-photo {
+      --size: 250px;
     }
   }
 
   // img5 — нижний правый
   &:nth-child(5) {
     padding: 5px;
-     margin-top: -90px;
-     margin-left: 0;
+    margin-top: -90px;
+    margin-left: 0;
     grid-column: 3;
     grid-row: 2;
-    img {
-      width: 260px;
-      height: 260px;
+
+    .events-photo {
+      --size: 260px;
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .events-photo__img {
+    transition: none;
   }
 }
