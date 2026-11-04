@@ -1,0 +1,138 @@
+@use "@/shared/styles/variables" as *;
+
+.history-section {
+  margin: 60px 0;
+}
+
+.history-title {
+  width: 100%;
+  font-size: 45px;
+  font-weight: 700;
+  color: map-get($colors, secondary);
+  margin: 0 0 1.5rem;
+}
+
+.history-description {
+  font-size: 20px;
+  line-height: 1.7;
+  color: map-get($colors, text);
+  max-width: 700px;
+  margin: 0 0 3rem;
+}
+
+.history-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  // вертикальная линия по центру
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: map-get($colors, secondary);
+    opacity: 0.15;
+  }
+}
+
+.history-item {
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+
+  // точка на линии
+  &::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 3px solid map-get($colors, secondary);
+    background: map-get($colors, primary);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  &:hover::before {
+    background: map-get($colors, hover);
+    transform: scale(1.2);
+  }
+
+  &:nth-child(odd) {
+    padding-right: 48px;
+    text-align: right;
+
+    &::before {
+      right: -9px;
+    }
+  }
+
+  &:nth-child(even) {
+    margin-left: 50%;
+    padding-left: 48px;
+
+    &::before {
+      left: -9px;
+    }
+  }
+
+  &__year {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    padding: 2px 12px;
+    border-radius: 6px;
+    background: map-get($colors, primary);
+    color: map-get($colors, secondary);
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  &__title {
+    margin: 0 0 0.5rem;
+    font-size: 22px;
+    font-weight: 600;
+    color: map-get($colors, secondary);
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: map-get($colors, text);
+  }
+}
+
+@media (max-width: 900px) {
+  .history-section {
+    text-align: left;
+  }
+
+  .history-timeline::before {
+    left: 9px;
+  }
+
+  .history-item {
+    width: 100%;
+
+    &:nth-child(odd),
+    &:nth-child(even) {
+      margin-left: 0;
+      padding: 0 0 0 44px;
+      text-align: left;
+
+      &::before {
+        left: 0;
+        right: auto;
+      }
+    }
+  }
+}
