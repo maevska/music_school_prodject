@@ -25,7 +25,7 @@ export const Events = () => {
     }, []);
 
     return (
-        <section className="events-section">
+        <section className="events-section" id="events">
             <h2 className="events-title">Events</h2>
             <p className="events-description">Concerts, creative performances and themed parties are regularly held for students of our online school.
                 This is not only an opportunity to have fun, but also a great chance to show your progress, show your talents and share your successes with other participants.

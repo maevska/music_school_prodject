@@ -31,7 +31,7 @@ const HISTORY = [
 
 export const SchoolHistory = () => {
     return (
-        <section className="history-section">
+        <section className="history-section" id="school">
             <h2 className="history-title">Our history</h2>
             <p className="history-description">
                 Add here a short introduction about how the school was founded and what it stands for.

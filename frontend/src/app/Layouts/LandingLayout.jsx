@@ -1,15 +1,23 @@
 import { Outlet } from 'react-router-dom';
-import { NavBar } from '@/widgets';
+import { NavBar, Footer } from '@/widgets';
 import { Button } from '@/shared';
+
+const MENU = [
+    { label: "School", href: "#school" },
+    { label: "Events", href: "#events" },
+    { label: "Teachers", href: "#teachers" },
+    { label: "Questions", href: "#questions" },
+    { label: "Contacts", href: "#contacts" },
+];
 
 export const LandingLayout = () => {
     const menu = (
         <ul className="menu">
-            <li>School</li>
-            <li>Events</li>
-            <li>Teachers</li>
-            <li>Questions</li>
-            <li>Contacts</li>
+            {MENU.map((item) => (
+                <li key={item.href}>
+                    <a href={item.href}>{item.label}</a>
+                </li>
+            ))}
         </ul>
     );
 
@@ -23,6 +31,7 @@ export const LandingLayout = () => {
         <>
             <NavBar left={menu} actions={actions} />
             <Outlet />
+            <Footer />
         </>
     );
 };

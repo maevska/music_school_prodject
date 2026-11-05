@@ -1,4 +1,4 @@
-import { Header, SchoolHistory, Events, FAQ } from "@/pages/Landing/ui";
+import { Header, SchoolHistory, Events, Teachers,FAQ, Contacts} from "@/pages/Landing/ui";
 import { Container } from "@/shared";
 
 export const Landing = () => {
@@ -7,7 +7,9 @@ export const Landing = () => {
             <Header/>
             <SchoolHistory/>
             <Events/>
+            <Teachers/>
             <FAQ/>
+            <Contacts/>
         </Container>
     );
 };
