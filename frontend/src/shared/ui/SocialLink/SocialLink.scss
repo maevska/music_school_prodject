@@ -1,0 +1,49 @@
+@use "@/shared/styles/variables" as *;
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, transform 0.2s ease;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &--lime {
+    background: map-get($colors, primary);
+    color: map-get($colors, secondary);
+
+    &:hover {
+      background: map-get($colors, hover);
+    }
+  }
+
+  &--ghost {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.35);
+
+    &:hover {
+      color: map-get($colors, primary);
+      border-color: map-get($colors, primary);
+    }
+  }
+
+  &--round {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+  }
+}
