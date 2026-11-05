@@ -1,5 +1,5 @@
-import { Button, Container, Card } from '@/shared';
-import { RequestCallForm } from '@/features';
+import { Button, Container, Card, Modal } from '@/shared';
+import { ContactForm } from '@/features';
 import { useState } from 'react';
 import './Header.scss'
 import owner from "@/shared/images/ownerSchool.webp"
@@ -23,11 +23,9 @@ export const Header = () => {
                         </Button>
 
                         {isOpen && (
-                            <div className="header__modal" onClick={() => setIsOpen(false)}>
-                                <div className="header__modal-content" onClick={(e) => e.stopPropagation()}>
-                                    <RequestCallForm onClose={() => setIsOpen(false)} />
-                                </div>
-                            </div>
+                            <Modal onClose={() => setIsOpen(false)} label="Submit application">
+                                <ContactForm />
+                            </Modal>
                         )}
                     </Container>
 
@@ -47,5 +45,3 @@ export const Header = () => {
         </header>
     );
 };
-
-
