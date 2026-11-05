@@ -1,4 +1,4 @@
-@use "@/shared/styles/variables" as *;
+@use "@/shared/styles/index" as *;
 
 .social-link {
   display: inline-flex;
@@ -7,37 +7,39 @@
   gap: 10px;
   padding: 12px 22px;
   border: 1.5px solid transparent;
-  border-radius: 999px;
+  border-radius: $radius-pill;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease,
-    border-color 0.2s ease, transform 0.2s ease;
+  transition: background-color $transition-fast, color $transition-fast,
+    border-color $transition-fast, transform $transition-fast;
 
   svg {
     flex-shrink: 0;
   }
 
-  &:hover {
-    transform: translateY(-2px);
+  @include hover-only {
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 
   &--lime {
-    background: map-get($colors, primary);
-    color: map-get($colors, secondary);
+    background: color(primary);
+    color: color(secondary);
 
     &:hover {
-      background: map-get($colors, hover);
+      background: color(hover);
     }
   }
 
   &--ghost {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.35);
+    color: color(white);
+    border-color: $on-dark-border;
 
     &:hover {
-      color: map-get($colors, primary);
-      border-color: map-get($colors, primary);
+      color: color(primary);
+      border-color: color(primary);
     }
   }
 

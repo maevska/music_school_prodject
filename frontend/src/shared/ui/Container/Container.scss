@@ -1,19 +1,22 @@
+@use "@/shared/styles/index" as *;
+
 .container {
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 32px;
   width: 100%;
   box-sizing: border-box;
 
-  &--fluid {
-    max-width: 100%;
-    padding: 0;
-  }
-
-  @media (min-width: 768px) {
+  @include down(lg) {
     padding: 0 24px;
   }
 
-  @media (min-width: 1200px) {
-    padding: 0 32px;
+  @include down(sm) {
+    padding: 0 16px;
+  }
+
+  // в конце, чтобы перебить отступы из media-запросов
+  &--fluid {
+    max-width: 100%;
+    padding: 0;
   }
 }

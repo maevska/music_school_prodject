@@ -1,14 +1,15 @@
-@use "@/shared/styles/variables" as *;
+@use "@/shared/styles/index" as *;
 
 .contacts-section {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   align-items: stretch;
   gap: 32px;
-  margin: 80px 0;
+  margin: $space-section 0;
 
-  @media (max-width: 900px) {
+  @include down(md) {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
@@ -17,10 +18,10 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 48px 40px;
-  border-radius: 20px;
-  background: map-get($colors, secondary);
-  color: #fff;
+  padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 40px);
+  border-radius: $radius-lg;
+  background: color(secondary);
+  color: color(white);
 
   // декоративные шары, как в блоке Events
   &::before,
@@ -28,7 +29,7 @@
     content: "";
     position: absolute;
     border-radius: 50%;
-    background: map-get($colors, primary);
+    background: color(primary);
     pointer-events: none;
   }
 
@@ -55,58 +56,34 @@
 }
 
 .contacts-title {
+  @include section-title($on-dark: true);
   margin: 0 0 1rem;
-  font-size: 45px;
-  font-weight: 700;
-
-  // лаймовая черта под заголовком
-  &::after {
-    content: "";
-    display: block;
-    width: 64px;
-    height: 6px;
-    margin-top: 10px;
-    border-radius: 3px;
-    background: map-get($colors, primary);
-  }
 }
 
 .contacts-subtitle {
   margin: 0 0 1rem;
-  font-size: 26px;
+  font-size: $fs-subtitle;
   font-style: italic;
-  color: map-get($colors, primary);
+  color: color(primary);
 }
 
 .contacts-text {
   margin: 0;
-  font-size: 18px;
+  font-size: $fs-body;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
+  color: $on-dark-text;
 }
 
 .contacts-list {
+  @include list-reset;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  list-style: none;
-  margin: 28px 0 0;
-  padding: 0;
-  font-size: 18px;
+  margin-top: 28px;
+  font-size: $fs-body;
 
   li {
-    position: relative;
-    padding-left: 30px;
-
-    &::before {
-      content: "♪";
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 22px;
-      line-height: 1.2;
-      color: map-get($colors, primary);
-    }
+    @include note-bullet(22px, color(primary), 1.2);
   }
 }
 
@@ -115,11 +92,8 @@
   padding-top: 36px;
 
   &__label {
+    @include eyebrow;
     margin: 0 0 14px;
-    font-size: 14px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
   }
 
   &__links {
@@ -130,12 +104,6 @@
 }
 
 .contacts-form {
-  padding: 40px;
-  border-radius: 20px;
-  background: map-get($colors, background);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-
-  @media (max-width: 600px) {
-    padding: 28px 20px;
-  }
+  padding: clamp(24px, 4vw, 40px);
+  @include card-surface;
 }

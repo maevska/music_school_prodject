@@ -1,14 +1,14 @@
-@use "@/shared/styles/variables" as *;
+@use "@/shared/styles/index" as *;
 
 .teacher-card {
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 20px;
-  background: map-get($colors, background);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  @include card-surface;
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base;
 
   // лаймовая полоска снизу, растёт при наведении
   &::after {
@@ -18,20 +18,22 @@
     bottom: 0;
     width: 0;
     height: 5px;
-    background: map-get($colors, primary);
+    background: color(primary);
     transition: width 0.4s ease;
   }
 
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(30, 30, 47, 0.18);
+  @include hover-only {
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: $shadow-card-hover;
 
-    &::after {
-      width: 100%;
-    }
+      &::after {
+        width: 100%;
+      }
 
-    .teacher-card__photo img {
-      transform: scale(1.06);
+      .teacher-card__photo img {
+        transform: scale(1.06);
+      }
     }
   }
 
@@ -39,7 +41,11 @@
     position: relative;
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    background: map-get($colors, secondary);
+    background: color(secondary);
+
+    @include down(sm) {
+      aspect-ratio: 1 / 1;
+    }
 
     img {
       display: block;
@@ -57,9 +63,9 @@
       inset: 0;
       background: linear-gradient(
         to top,
-        rgba(30, 30, 47, 0.92) 0%,
-        rgba(30, 30, 47, 0.4) 38%,
-        rgba(30, 30, 47, 0) 65%
+        rgba(color(secondary), 0.92) 0%,
+        rgba(color(secondary), 0.4) 38%,
+        rgba(color(secondary), 0) 65%
       );
       pointer-events: none;
     }
@@ -71,10 +77,10 @@
     left: 16px;
     z-index: 1;
     padding: 6px 14px;
-    border-radius: 999px;
-    background: map-get($colors, primary);
-    color: map-get($colors, secondary);
-    font-size: 14px;
+    border-radius: $radius-pill;
+    background: color(primary);
+    color: color(secondary);
+    font-size: $fs-small;
     font-weight: 500;
 
     strong {
@@ -90,20 +96,24 @@
     bottom: 0;
     z-index: 1;
     padding: 0 24px 22px;
+
+    @include down(sm) {
+      padding: 0 18px 16px;
+    }
   }
 
   &__name {
     margin: 0 0 4px;
-    font-size: 26px;
+    font-size: clamp(22px, 4vw, 26px);
     font-weight: 700;
-    color: #fff;
+    color: color(white);
   }
 
   &__role {
     margin: 0;
     font-size: 16px;
     font-style: italic;
-    color: map-get($colors, primary);
+    color: color(primary);
   }
 
   &__body {
@@ -111,23 +121,25 @@
     flex-direction: column;
     gap: 16px;
     padding: 22px 24px 28px;
+
+    @include down(sm) {
+      padding: 18px 18px 22px;
+    }
   }
 
   &__tags {
+    @include list-reset;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
   &__tag {
     padding: 6px 14px;
-    border-radius: 999px;
-    background: map-get($colors, secondary);
-    color: map-get($colors, primary);
-    font-size: 14px;
+    border-radius: $radius-pill;
+    background: color(secondary);
+    color: color(primary);
+    font-size: $fs-small;
     font-weight: 600;
 
     &::before {
@@ -136,24 +148,22 @@
   }
 
   &__meta {
+    @include list-reset;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 
     li {
       display: flex;
       align-items: center;
       gap: 10px;
       font-size: 16px;
-      color: map-get($colors, text);
+      color: color(text);
     }
 
     svg {
       flex-shrink: 0;
-      color: map-get($colors, secondary);
+      color: color(secondary);
     }
   }
 }

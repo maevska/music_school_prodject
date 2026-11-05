@@ -1,0 +1,165 @@
+@use "variables" as *;
+
+// ───────────── Адаптив ─────────────
+@mixin down($name) {
+  @if not map-has-key($breakpoints, $name) {
+    @error "Брейкпоинт `#{$name}` не найден в $breakpoints";
+  }
+  @media (max-width: map-get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+// эффекты наведения только там, где есть мышь (на телефонах они «залипают»)
+@mixin hover-only {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// ───────────── Общие куски ─────────────
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin card-surface {
+  border-radius: $radius-lg;
+  background: color(background);
+  box-shadow: $shadow-card;
+}
+
+// заголовок секции; $on-dark — для тёмного фона (белый + лаймовая черта)
+@mixin section-title($on-dark: false) {
+  margin: 0 0 1.5rem;
+  font-size: $fs-title;
+  font-weight: 700;
+  color: if($on-dark, color(white), color(secondary));
+
+  @if $on-dark {
+    &::after {
+      content: "";
+      display: block;
+      width: 64px;
+      height: 6px;
+      margin-top: 10px;
+      border-radius: 3px;
+      background: color(primary);
+    }
+  }
+}
+
+// абзац под заголовком секции
+@mixin section-lead {
+  font-size: $fs-lead;
+  line-height: 1.7;
+  color: color(text);
+}
+
+// маленькая подпись капсом на тёмном фоне
+@mixin eyebrow {
+  font-size: $fs-small;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $on-dark-label;
+}
+
+// пункт списка с нотой ♪
+@mixin note-bullet($size: 22px, $color: inherit, $line-height: 1.2) {
+  position: relative;
+  padding-left: 30px;
+
+  &::before {
+    content: "♪";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: $size;
+    line-height: $line-height;
+    color: $color;
+  }
+}
+
+// поля форм
+@mixin field-label {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: color(label);
+}
+
+@mixin field-control {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid color(border);
+  border-radius: $radius-xs;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color $transition-base, box-shadow $transition-base;
+
+  &:focus {
+    border-color: color(focus);
+    box-shadow: 0 0 0 2px rgba(color(focus), 0.2);
+  }
+}
+
+// карточка формы входа / регистрации
+@mixin auth-form($radius: $radius-card) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid color(photo-border);
+  border-radius: $radius;
+  background: color(white);
+  box-shadow: $shadow-form;
+
+  @include down(sm) {
+    padding: 20px 16px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    color: color(text);
+  }
+
+  &__error {
+    color: color(error-text);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  &__success {
+    color: color(success-text);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  &__footer {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: $fs-small;
+
+    .form__link {
+      text-decoration: underline;
+      color: color(link);
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

@@ -1,22 +1,25 @@
-@use '@/shared/styles/variables' as *;
+@use "@/shared/styles/index" as *;
 
 .button {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-padding: 10px 18px;
-background-color: map-get($colors, primary );
-color: map-get($colors, secondary );
-border: none;
-border-radius: 8px;
-font-size: 15px;
-font-weight: 500;
-cursor: pointer;
-transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  background-color: color(primary);
+  color: color(secondary);
+  border: none;
+  border-radius: $radius-sm;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color $transition-fast;
 
+  &:hover:not(:disabled) {
+    background-color: color(hover);
+  }
 
-&:hover:not(:disabled) {
-background-color: map-get($colors, hover );
-}
-
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }

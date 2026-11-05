@@ -1,7 +1,96 @@
+// ───────────── Цвета ─────────────
 $colors: (
   primary: #ceff1d,
   secondary: #1e1e2f,
   text: #333,
   background: #ffffff,
   hover: #afde06,
+  white: #ffffff,
+  border: #d1d5db,
+  divider: #e5e7eb,
+  label: #374151,
+  muted: #9ca3af,
+  icon: #6b7280,
+  focus: #3b82f6,
+  error: #ef4444,
+  disabled: #f3f4f6,
+  photo-border: #dddddd,
+    black: #000000,
+  error-text: #e63946,
+  danger: #d93025,
+  success-text: #2a9d8f,
+  success: #28a745,
+  link: #1a73e8,
+  icon-muted: #777777,
+
+  // страница 404
+  night-1: #1a1a2e,
+  night-2: #16213e,
+  night-3: #0f3460,
+  lavender: #e0e0ff,
+  violet: #6a5acd,
+  violet-dark: #483d8b,
+  violet-light: #836fff,
+  gold: #ffd700,
+  gold-dark: #ffcc00,
 );
+
+@function color($name) {
+  @if not map-has-key($colors, $name) {
+    @error "Цвет `#{$name}` не найден в $colors";
+  }
+  @return map-get($colors, $name);
+}
+
+// полупрозрачный белый на тёмном фоне
+$on-dark-text: rgba(255, 255, 255, 0.8);
+$on-dark-muted: rgba(255, 255, 255, 0.6);
+$on-dark-label: rgba(255, 255, 255, 0.55);
+$on-dark-border: rgba(255, 255, 255, 0.35);
+$on-dark-line: rgba(255, 255, 255, 0.12);
+
+// ───────────── Брейкпоинты (max-width) ─────────────
+$breakpoints: (
+  sm: 600px,  // телефон
+  md: 900px,  // планшет
+  lg: 1100px, // небольшой ноутбук
+);
+
+// ───────────── Радиусы и тени ─────────────
+$radius-xs: 6px;
+$radius-sm: 8px;
+$radius-md: 10px;
+$radius-lg: 20px;
+$radius-pill: 999px;
+
+$shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+$shadow-card: 0 10px 40px rgba(0, 0, 0, 0.08);
+$shadow-card-hover: 0 20px 50px rgba(30, 30, 47, 0.18);
+$shadow-nav: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+// ───────────── Отступы между секциями ─────────────
+$space-section: clamp(36px, 6vw, 60px);
+$space-section-sm: clamp(20px, 3vw, 30px);
+
+// ───────────── Типографика (плавная под ширину экрана) ─────────────
+$fs-hero-title: clamp(40px, 7vw, 70px);
+$fs-hero-subtitle: clamp(22px, 4vw, 45px);
+$fs-hero-list: clamp(17px, 2.4vw, 25px);
+$fs-title: clamp(30px, 5vw, 45px);     // заголовок секции
+$fs-subtitle: clamp(20px, 3.5vw, 28px);
+$fs-lead: clamp(16px, 2.2vw, 20px);    // абзац под заголовком
+$fs-body: clamp(16px, 2vw, 18px);
+$fs-small: 14px;
+
+// ───────────── Анимации ─────────────
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+
+// ───────────── Дополнительные радиусы, тени, оверлей ─────────────
+$radius-card: 12px;
+
+$shadow-form: 0 2px 6px rgba(0, 0, 0, 0.05);
+$shadow-modal: 0 4px 20px rgba(0, 0, 0, 0.15);
+$shadow-hover-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+$overlay: rgba(0, 0, 0, 0.55);

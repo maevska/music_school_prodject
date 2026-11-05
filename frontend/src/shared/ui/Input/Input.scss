@@ -1,49 +1,39 @@
+@use "@/shared/styles/index" as *;
+
 .input-field {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
 
   &__label {
-    font-size: 0.95rem;
-    color: #374151;
-    margin-bottom: 6px;
+    @include field-label;
   }
 
   &__wrapper {
     position: relative;
     display: flex;
     align-items: center;
-    transition: all 0.3s;
+    transition: all $transition-base;
   }
 
   &__icon {
     position: absolute;
     left: 10px;
-    color: #6b7280;
-    transition: all 0.3s;
+    color: color(icon);
+    transition: all $transition-base;
   }
 
   &__input {
-    width: 100%;
-    padding: 10px 12px;
+    @include field-control;
     padding-left: 36px;
-    border-radius: 6px;
-    border: 1px solid #d1d5db;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
 
-    &:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-    }
     &:disabled {
-      background-color: #f3f4f6;
+      background-color: color(disabled);
       cursor: not-allowed;
     }
 
     &--error {
-      border-color: #ef4444;
+      border-color: color(error);
       animation: shake 0.3s;
     }
   }
@@ -53,18 +43,18 @@
     right: 10px;
     background: none;
     border: none;
-    color: #3b82f6;
+    color: color(focus);
     font-size: 0.85rem;
     cursor: pointer;
     outline: none;
   }
 
   &__error {
-    font-size: 0.85rem;
-    color: #ef4444;
     margin-top: 4px;
+    font-size: 0.85rem;
+    color: color(error);
     opacity: 0;
-    animation: fadeIn 0.3s forwards;
+    animation: input-error-in 0.3s forwards;
   }
 }
 
@@ -83,7 +73,8 @@
     transform: translateX(-3px);
   }
 }
-@keyframes fadeIn {
+
+@keyframes input-error-in {
   to {
     opacity: 1;
   }

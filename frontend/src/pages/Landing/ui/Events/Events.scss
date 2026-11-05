@@ -1,13 +1,13 @@
-@use "@/shared/styles/variables" as *;
+@use "@/shared/styles/index" as *;
 
 .events-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 2rem;
-  margin: 30px 0;
+  margin: $space-section-sm 0;
 
-  @media (max-width: 900px) {
+  @include down(lg) {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -15,23 +15,24 @@
 }
 
 .events-title {
+  @include section-title;
   width: 100%;
-  font-size: 45px;
-  font-weight: 700;
-  color: map-get($colors, secondary);
-  margin-bottom: 1.5rem;
 }
 
 .events-description {
+  @include section-lead;
   flex: 1;
-  font-size: 20px;
-  line-height: 1.7;
-  color: map-get($colors, text);
   width: 45%;
   max-width: 600px;
+
+  @include down(lg) {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
 }
 
-.events-imagesWrapper {
+.events-section .events-imagesWrapper {
   width: 45%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -41,13 +42,17 @@
   justify-content: end;
   flex: 0 0 auto;
 
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    justify-items: center;
-    margin-top: 2rem;
+  @include down(lg) {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 0;
   }
 }
- 
+
+// Шарик: позиция и размер фиксированы, внутри меняются фотографии
 .events-photo {
   --size: 170px;
 
@@ -57,12 +62,14 @@
   height: var(--size);
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #ddd;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 3px solid color(photo-border);
+  transition: transform $transition-base, border-color $transition-base;
 
-  &:hover {
-    transform: scale(1.05);
-    border-color: map-get($colors, hover);
+  @include hover-only {
+    &:hover {
+      transform: scale(1.05);
+      border-color: color(hover);
+    }
   }
 
   &__img {
@@ -79,6 +86,10 @@
     &.is-active {
       opacity: 1;
       transform: scale(1);
+    }
+
+    @include reduced-motion {
+      transition: none;
     }
   }
 }
@@ -152,10 +163,26 @@
       --size: 260px;
     }
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .events-photo__img {
-    transition: none;
+  // планшет: обычный ряд кружков одного размера
+  @include down(lg) {
+    &:nth-child(n) {
+      margin: 0;
+      padding: 0;
+      grid-column: auto;
+      grid-row: auto;
+      width: auto;
+
+      .events-photo {
+        --size: min(28vw, 220px);
+      }
+    }
+  }
+
+  // телефон: по два в ряд
+  @include down(sm) {
+    &:nth-child(n) .events-photo {
+      --size: min(40vw, 190px);
+    }
   }
 }

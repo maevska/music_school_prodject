@@ -1,41 +1,45 @@
 @use "@/shared/styles/index" as *;
 
 .card {
-  background: map-get($colors , backgraund );
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease;
+  background: color(background);
+  border: 1px solid color(divider);
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  transition:
+    box-shadow $transition-fast,
+    transform $transition-fast;
   cursor: default;
-  overflow: hidden; 
+  overflow: hidden;
   padding: 0;
 
   &--hoverable {
     cursor: pointer;
 
-    &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transform: translateY(-2px);
+    @include hover-only {
+      &:hover {
+        box-shadow: $shadow-hover-sm;
+        transform: translateY(-2px);
+      }
     }
   }
 
   &__title {
     margin: 0;
-    padding: 0; 
+    padding: 0;
     font-size: 1.2rem;
     font-weight: 600;
-    color: map-get($colors , text);
+    color: color(text);
   }
 
   &__subtitle {
     margin: 0;
     padding: 0;
     font-size: 0.95rem;
-    color:map-get($colors , text );
+    color: color(text);
   }
 
   &__content {
-    padding: 0; 
+    padding: 0;
     margin: 0;
   }
 }

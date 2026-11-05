@@ -1,33 +1,28 @@
-@use "@/shared/styles/variables" as *;
+@use "@/shared/styles/index" as *;
+
+$timeline-line: color(secondary);
 
 .history-section {
-  margin: 60px 0;
+  margin: $space-section 0;
 }
 
 .history-title {
+  @include section-title;
   width: 100%;
-  font-size: 45px;
-  font-weight: 700;
-  color: map-get($colors, secondary);
-  margin: 0 0 1.5rem;
 }
 
 .history-description {
-  font-size: 20px;
-  line-height: 1.7;
-  color: map-get($colors, text);
+  @include section-lead;
   max-width: 700px;
   margin: 0 0 3rem;
 }
 
 .history-timeline {
+  @include list-reset;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 
   // вертикальная линия по центру
   &::before {
@@ -38,7 +33,7 @@
     left: 50%;
     width: 2px;
     transform: translateX(-50%);
-    background: map-get($colors, secondary);
+    background: $timeline-line;
     opacity: 0.15;
   }
 }
@@ -57,14 +52,16 @@
     height: 18px;
     box-sizing: border-box;
     border-radius: 50%;
-    border: 3px solid map-get($colors, secondary);
-    background: map-get($colors, primary);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    border: 3px solid color(secondary);
+    background: color(primary);
+    transition: background-color $transition-fast, transform $transition-fast;
   }
 
-  &:hover::before {
-    background: map-get($colors, hover);
-    transform: scale(1.2);
+  @include hover-only {
+    &:hover::before {
+      background: color(hover);
+      transform: scale(1.2);
+    }
   }
 
   &:nth-child(odd) {
@@ -89,33 +86,29 @@
     display: inline-block;
     margin-bottom: 0.6rem;
     padding: 2px 12px;
-    border-radius: 6px;
-    background: map-get($colors, primary);
-    color: map-get($colors, secondary);
-    font-size: 28px;
+    border-radius: $radius-xs;
+    background: color(primary);
+    color: color(secondary);
+    font-size: clamp(22px, 4vw, 28px);
     font-weight: 700;
   }
 
   &__title {
     margin: 0 0 0.5rem;
-    font-size: 22px;
+    font-size: clamp(19px, 3vw, 22px);
     font-weight: 600;
-    color: map-get($colors, secondary);
+    color: color(secondary);
   }
 
   &__text {
     margin: 0;
-    font-size: 18px;
+    font-size: $fs-body;
     line-height: 1.6;
-    color: map-get($colors, text);
+    color: color(text);
   }
 }
 
-@media (max-width: 900px) {
-  .history-section {
-    text-align: left;
-  }
-
+@include down(md) {
   .history-timeline::before {
     left: 9px;
   }

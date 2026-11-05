@@ -1,10 +1,10 @@
-@use "@/shared/styles/variables" as *;
+@use "@/shared/styles/index" as *;
 
 .footer {
   margin-top: 40px;
-  border-top: 4px solid map-get($colors, primary);
-  background: map-get($colors, secondary);
-  color: #fff;
+  border-top: 4px solid color(primary);
+  background: color(secondary);
+  color: color(white);
 
   &__inner {
     display: grid;
@@ -12,7 +12,7 @@
     gap: 40px;
     padding: 56px 0 40px;
 
-    @media (max-width: 800px) {
+    @include down(md) {
       grid-template-columns: 1fr;
       gap: 32px;
       padding: 40px 0 28px;
@@ -35,45 +35,42 @@
 
   &__name {
     margin: 0;
-    font-size: 28px;
+    font-size: $fs-subtitle;
     font-weight: 700;
   }
 
   &__tagline {
     max-width: 320px;
     margin: 0;
-    font-size: 18px;
+    font-size: $fs-body;
     font-style: italic;
     line-height: 1.5;
-    color: map-get($colors, primary);
+    color: color(primary);
   }
 
   &__title {
+    @include eyebrow;
     margin: 0 0 16px;
-    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
   }
 
   &__list {
+    @include list-reset;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
   &__link {
-    font-size: 18px;
-    color: #fff;
+    font-size: $fs-body;
+    color: color(white);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color $transition-fast;
 
-    &:hover {
-      color: map-get($colors, primary);
+    @include hover-only {
+      &:hover {
+        color: color(primary);
+      }
     }
   }
 
@@ -83,13 +80,13 @@
   }
 
   &__bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid $on-dark-line;
   }
 
   &__copy {
     margin: 0;
     padding: 20px 0;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: $fs-small;
+    color: $on-dark-muted;
   }
 }
