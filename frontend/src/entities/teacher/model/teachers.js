@@ -1,6 +1,6 @@
-import anastasia from "@/shared/images/ownerSchool.JPG";
-import alina from "@/shared/images/teacherAlina.jpg";
-import kateryna from "@/shared/images/teacherKaterina.png";
+import anastasia from "@/shared/images/ownerSchool.webp";
+import alina from "@/shared/images/teacherAlina.webp";
+import kateryna from "@/shared/images/teacherKaterina.webp";
 
 export const teachers = [
     {
