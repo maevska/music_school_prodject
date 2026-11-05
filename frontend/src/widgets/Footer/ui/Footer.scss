@@ -1,0 +1,95 @@
+@use "@/shared/styles/variables" as *;
+
+.footer {
+  margin-top: 40px;
+  border-top: 4px solid map-get($colors, primary);
+  background: map-get($colors, secondary);
+  color: #fff;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 40px;
+    padding: 56px 0 40px;
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 40px 0 28px;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  &__tagline {
+    max-width: 320px;
+    margin: 0;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.5;
+    color: map-get($colors, primary);
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: map-get($colors, primary);
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  &__copy {
+    margin: 0;
+    padding: 20px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
