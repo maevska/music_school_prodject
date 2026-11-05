@@ -41,7 +41,7 @@ export const TeacherCard = ({ teacher }) => {
     return (
         <article className="teacher-card">
             <div className="teacher-card__photo">
-                <img src={photo} alt={name} />
+                <img src={photo} alt={name} loading="lazy" decoding="async" />
 
                 <span className="teacher-card__badge">
                     <strong>{experience}</strong> years of experience

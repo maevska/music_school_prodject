@@ -2,7 +2,7 @@ import { Button, Container, Card } from '@/shared';
 import { RequestCallForm } from '@/features';
 import { useState } from 'react';
 import './Header.scss'
-import owner from "@/shared/images/ownerSchool.JPG"
+import owner from "@/shared/images/ownerSchool.webp"
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +32,15 @@ export const Header = () => {
                     </Container>
 
                     <Container className="right-header-cont">
-                        <img src={owner} alt="ownerSchool" className="header-image" />
+                        <img
+                            src={owner}
+                            alt="Anastasia Maevskaya, founder of the school"
+                            className="header-image"
+                            width="1000"
+                            height="1500"
+                            fetchPriority="high"
+                            decoding="async"
+                        />
                     </Container>
                 </div>
             </Card>
