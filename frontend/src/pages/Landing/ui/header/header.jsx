@@ -6,6 +6,7 @@ import owner from "@/shared/images/ownerSchool.webp"
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    
     return (
         <header className="header-cont">
             <Card className="header-card">
