@@ -5,17 +5,19 @@
   padding: 40px 0;
   background: color(background);
 
+  // боковые отступы даёт общий Container страницы, своих здесь нет
   &__container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
   }
 
   &__header {
     width: 100%;
     text-align: left;
     margin-bottom: 35px;
+
+    @include down(sm) {
+      margin-bottom: 20px;
+    }
   }
 
   &__title {
@@ -24,18 +26,26 @@
   }
 
   &__description {
-    margin-top: 1.5rem;
-    margin-bottom: 3rem;
+    margin: 1.5rem 0 3rem;
     color: color(text);
     font-size: clamp(16px, 2.6vw, 25px);
     line-height: 1.6;
+
+    @include down(sm) {
+      margin: 1rem 0 1.5rem;
+    }
   }
 
   &__list {
+    box-sizing: border-box;
     width: 100%;
     padding: 25px 40px;
     background: color(secondary);
     border-radius: $radius-lg;
+
+    @include down(sm) {
+      padding: 6px 18px;
+    }
   }
 
   &__item {
@@ -53,16 +63,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 16px;
 
     background: transparent;
     border: none;
     color: color(background);
 
+    font-family: inherit;
     font-size: clamp(16px, 2.6vw, 25px);
     font-weight: 600;
     text-align: left;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+
+    > span:first-child {
+      min-width: 0;
+    }
+
+    @include down(sm) {
+      min-height: 58px;
+    }
 
     @include hover-only {
       &:hover {
@@ -86,6 +107,12 @@
     font-size: 25px;
     font-weight: 700;
     line-height: 1;
+
+    @include down(sm) {
+      width: 32px;
+      height: 32px;
+      font-size: 21px;
+    }
   }
 
   &__answer {
@@ -96,48 +123,23 @@
     p {
       overflow: hidden;
       margin: 0;
+      padding: 0 55px 0 0;
       color: color(background);
       font-size: $fs-lead;
       line-height: 1.7;
+      transition: padding-bottom $transition-base;
+
+      @include down(sm) {
+        padding-right: 0;
+      }
     }
 
     &--open {
       grid-template-rows: 1fr;
 
       p {
-        padding: 0 55px 22px 0;
-
-        @include down(sm) {
-          padding-right: 0;
-        }
+        padding-bottom: 22px;
       }
-    }
-  }
-
-  @include down(sm) {
-    padding: 50px 0;
-
-    &__container {
-      padding: 0 16px;
-    }
-
-    &__header {
-      text-align: right;
-      margin-bottom: 25px;
-    }
-
-    &__list {
-      padding: 15px 20px;
-    }
-
-    &__question {
-      min-height: 58px;
-    }
-
-    &__icon {
-      width: 32px;
-      height: 32px;
-      font-size: 21px;
     }
   }
 }
